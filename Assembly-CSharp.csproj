@@ -65,8 +65,15 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.39f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GoblinClassData.cs" />
     <Compile Include="Assets\Scripts\BattleSystem.cs" />
+    <Compile Include="Assets\Scripts\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
+    <Compile Include="Assets\Scripts\SimpleBreathing.cs" />
+    <Compile Include="Assets\Scripts\TurnManager.cs" />
+    <Compile Include="Assets\Scripts\TeamHUD.cs" />
+    <Compile Include="Assets\Scripts\SkillData.cs" />
+    <Compile Include="Assets\Scripts\GoblinNameDisplay.cs" />
     <Compile Include="Assets\Scripts\BattleHUD.cs" />
   </ItemGroup>
   <ItemGroup>

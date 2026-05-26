@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10dcbfe9b2373849ad514e1d8eb14a5, type: 3}
+  m_Name: Guerrero
+  m_EditorClassIdentifier: 
+  className: Guerrero
+  classEmoji: 
+  classDescription: Tanque defensivo que absorbe daño y golpea fuerte. Pasiva Ironhide gana defensa temporal al recibir daño físico.
+  aiBehavior: 0
+  passiveAbility: 2
+  passiveValue: 2
+  baseHP: 120
+  baseMP: 30
+  baseStrength: 18
+  baseMagicPower: 5
+  baseSpeed: 8
+  baseDefense: 6
+  statVariation: 3
+  classSkills:
+  - {fileID: 11400000, guid: a36f6ecdfba76474f9418b923e9e33d8, type: 2}

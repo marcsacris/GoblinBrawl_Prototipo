@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10dcbfe9b2373849ad514e1d8eb14a5, type: 3}
+  m_Name: "P\xEDcaro"
+  m_EditorClassIdentifier: 
+  className: Pícaro
+  classEmoji: 
+  classDescription: Picarea que no vea
+  aiBehavior: 2
+  passiveAbility: 1
+  passiveValue: 1
+  baseHP: 80
+  baseMP: 40
+  baseStrength: 12
+  baseMagicPower: 8
+  baseSpeed: 18
+  baseDefense: 3
+  statVariation: 3
+  classSkills:
+  - {fileID: 11400000, guid: 99472863c19632a47a952f85c45c111d, type: 2}

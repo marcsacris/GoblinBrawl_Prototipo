@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8acb11cbb8034d49acba5006c50d065, type: 3}
+  m_Name: Daga Envenenada
+  m_EditorClassIdentifier: 
+  skillName: Daga Envenenada
+  description: "Aplica da\xF1o + veneno continuo"
+  skillType: 4
+  targetType: 0
+  mpCost: 15
+  powerMultiplier: 0.8
+  flatBonus: 2
+  poisonDamagePerTurn: 5
+  poisonDuration: 3
