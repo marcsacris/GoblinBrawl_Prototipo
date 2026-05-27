@@ -323,6 +323,7 @@ public class BattleSystem : MonoBehaviour
 
             if (activeUnit.IsDead)
             {
+                activeUnit.HideVisuals();
                 dialogueText.text = $"¡{activeUnit.unitName} ha sucumbido al veneno!";
                 yield return StartCoroutine(WaitForClick());
                 AdvanceTurn();
@@ -572,6 +573,7 @@ public class BattleSystem : MonoBehaviour
 
         if (target.IsDead)
         {
+            target.HideVisuals();
             dialogueText.text = $"¡{target.unitName} ha sido noqueado!";
             yield return StartCoroutine(WaitForClick());
         }
@@ -639,6 +641,7 @@ public class BattleSystem : MonoBehaviour
 
             if (target.IsDead)
             {
+                target.HideVisuals();
                 dialogueText.text = $"¡{target.unitName} ha caído derrotado!";
                 yield return StartCoroutine(WaitForClick());
             }
@@ -669,6 +672,7 @@ public class BattleSystem : MonoBehaviour
 
                 if (t.IsDead)
                 {
+                    t.HideVisuals();
                     dialogueText.text = $"¡{t.unitName} ha caído derrotado!";
                     yield return StartCoroutine(WaitForClick());
                 }
@@ -741,6 +745,7 @@ public class BattleSystem : MonoBehaviour
 
         if (target.IsDead)
         {
+            target.HideVisuals();
             dialogueText.text = $"¡{target.unitName} ha caído!";
             yield return StartCoroutine(WaitForClick());
         }
@@ -827,6 +832,7 @@ public class BattleSystem : MonoBehaviour
 
         if (target.IsDead)
         {
+            target.HideVisuals();
             dialogueText.text = $"¡Oh no! ¡{target.unitName} ha sido noqueado!";
             yield return StartCoroutine(WaitForClick());
         }

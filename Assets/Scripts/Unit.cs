@@ -44,6 +44,15 @@ public class Unit : MonoBehaviour
     // ─── Pasiva: bonus de defensa temporal (Ironhide del Guerrero) ───────────
     [SerializeField] private int tempDefenseBonus = 0;      // Bonus temporal hasta su próximo turno
 
+    // ─── Audio ───────────────────────────────────────────────────────────────
+    [Header("Efectos de Sonido")]
+    [Tooltip("Sonido que se reproduce al recibir daño.")]
+    public AudioClip hurtSound;
+    [Tooltip("Sonido que se reproduce al morir.")]
+    public AudioClip deathSound;
+
+    private AudioSource audioSource;  // Se crea automáticamente en Awake()
+
     // ─── Propiedades Públicas ─────────────────────────────────────────────────
     public bool IsDead              => currentHP <= 0;
     public bool IsDefending         => isDefending;
@@ -52,7 +61,46 @@ public class Unit : MonoBehaviour
     public int  PoisonDamagePerTurn  => poisonDamagePerTurn;
     public int  TempDefenseBonus    => tempDefenseBonus;
 
+    // ─── Ocultar Visuales al Morir ───────────────────────────────────────────
+
+    /// <summary>
+    /// Oculta el sprite, la animación de respiración y el texto de nombre/clase
+    /// del goblin cuando muere. Se llama desde BattleSystem al detectar IsDead.
+    /// </summary>
+    public void HideVisuals()
+    {
+        // Reproducir sonido de muerte
+        PlaySound(deathSound);
+
+        // 1. Desactivar el SpriteRenderer (el dibujo del goblin)
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null) sr.enabled = false;
+
+        // 2. Desactivar la animación de respiración
+        SimpleBreathing breathing = GetComponent<SimpleBreathing>();
+        if (breathing != null) breathing.enabled = false;
+
+        // 3. Desactivar el Canvas hijo con el nombre y la clase
+        Canvas nameCanvas = GetComponentInChildren<Canvas>();
+        if (nameCanvas != null) nameCanvas.gameObject.SetActive(false);
+    }
+
     // ─── Inicialización ───────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Creamos el AudioSource automáticamente para no tener que añadirlo a mano.
+    /// Usamos Awake() para que esté listo antes de que Start() de otros scripts se ejecute.
+    /// </summary>
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.playOnAwake = false;
+    }
+
     // NOTA: No inicializamos stats en Start() porque ApplyClassData() se llama
     // desde BattleSystem.SetupBattle() antes de que empiece el combate.
 
@@ -115,6 +163,10 @@ public class Unit : MonoBehaviour
         finalDamage = Mathf.Max(finalDamage, 1); // Mínimo 1 de daño siempre
         currentHP -= finalDamage;
         currentHP = Mathf.Max(currentHP, 0);
+
+        // Reproducir sonido de herida
+        PlaySound(hurtSound);
+
         return finalDamage;
     }
 
@@ -229,5 +281,18 @@ public class Unit : MonoBehaviour
             : magicPower;
 
         return Mathf.RoundToInt(baseStat * skill.powerMultiplier) + skill.flatBonus;
+    }
+
+    // ─── Audio Utilidades ────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Reproduce un AudioClip de forma segura. Si el clip o el AudioSource son null, no hace nada.
+    /// </summary>
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 }
